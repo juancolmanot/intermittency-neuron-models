@@ -1,0 +1,63 @@
+# ====================================================================
+# Compiler info and paths
+# ====================================================================
+CXX = g++
+OMP = -fopenmp
+GDB = -g
+
+# Directories
+SRCDIR = src
+INCDIR = include
+BINDIR = bin
+
+# Main program (to be set via command line or manually)
+MAIN =
+
+# Libraries
+LDLIBS = -lm -lboost_system -lboost_filesystem -fopenmp -lnlopt -lgsl -lgslcblas
+
+# Compile flags
+# ====================================================================
+# Warning flags
+flag_w01 = -std=c++17 -Wall -Wextra -Wconversion -pedantic -Wno-unused-parameter
+# Debugging flags
+flag_d01 = -g
+# -fstack-protector -fsanitize=address
+# Optimization flags
+flag_o01 = -O3 -ftree-vectorize -ftree-loop-vectorize -funroll-loops
+flag_o02 = -march=native
+# -Ofast -ffast-math
+flag_o03 = -fopt-info-vec -ftree-vectorizer-verbose=2
+
+CXXFLAGS = ${flag_o01} ${flag_o02} ${flag_w01} ${flag_d01} ${flag_o03} ${OMP}
+
+# Header files
+HEADERS_LIST = $(HEADERS)
+
+# Transform header list into .o and .h file lists
+HEADERS_O := $(addsuffix .o,$(HEADERS_LIST))
+HEADERS_H := $(addsuffix .hpp,$(HEADERS_LIST))
+
+# Object files (for dependencies)
+OBJS := $(HEADERS_O:%=$(BINDIR)/%)
+
+# Rules
+.PHONY: all clean
+
+all: $(BINDIR)/$(MAIN)
+
+# Rule to build the main program
+$(BINDIR)/$(MAIN): $(SRCDIR)/$(MAIN).o $(OBJS)
+	@mkdir -p $(BINDIR)
+	@$(CXX) $(CXXFLAGS) -I$(INCDIR) $^ -o $@ $(LDLIBS)
+
+# Rule to compile local headers into object files
+$(BINDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS_H:%=$(INCDIR)/%)
+	@mkdir -p $(BINDIR)
+	@$(CXX) $(CXXFLAGS) -I$(INCDIR) -c $< -o $@
+	
+# Clean up
+clean:
+	@rm -f $(BINDIR)/*
+
+.PHONY: clean all
