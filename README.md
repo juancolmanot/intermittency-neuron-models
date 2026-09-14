@@ -5,7 +5,7 @@ Code and data for *Reinjection processes in intermittent neuron models: the Rulk
 Intermittency analysis of the Izhikevich and Rulkov neuron models using the
 M-function methodology.
 
-Juan Colman and Sergio Elaskar (2026)
+Juan Colman and Sergio Elaskar (2026). Repository: https://github.com/juancolmanot/intermittency-neuron-models
 
 ---
 
