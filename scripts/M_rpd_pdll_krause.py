@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-DATA = os.path.join(BASE, 'cpp', 'out', 'scaling')
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATA = os.path.join(BASE, 'data')
 FIG  = os.path.join(BASE, 'figures')
 
 DVALS = ['-11.795',

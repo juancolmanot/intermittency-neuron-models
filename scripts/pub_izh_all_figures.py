@@ -23,10 +23,10 @@ import matplotlib.pyplot as plt
 # ═══════════════════════════════════════════════════════════════════════════════
 # Paths
 # ═══════════════════════════════════════════════════════════════════════════════
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-DATA = os.path.join(BASE, 'cpp', 'out', 'scaling')
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATA = os.path.join(BASE, 'data')
 FIG  = os.path.join(BASE, 'figures')
-LOGS = os.path.join(BASE, 'logs')
+LOGS = os.path.join(BASE, 'data')
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # rcParams — ASME journal style

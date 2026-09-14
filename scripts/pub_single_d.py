@@ -16,7 +16,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 FIG = os.path.join(BASE, 'figures')
 CLAM = 2.0
 C_NUM = 'blue'

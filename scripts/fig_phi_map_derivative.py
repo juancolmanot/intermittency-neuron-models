@@ -10,9 +10,9 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 FIG = os.path.join(BASE, 'figures')
-SCALING = os.path.join(BASE, 'cpp', 'out', 'scaling')
+SCALING = os.path.join(BASE, 'data')
 
 plt.rcParams.update({
     'text.usetex': True,
@@ -42,7 +42,7 @@ def make_figure():
     print(f"RPD peak at u_bar = {peak_u:.4f}")
 
     # --- Load F^2 map data (d=-12, full multi-IC) ---
-    mdata = np.loadtxt(os.path.join(BASE, 'code', 'datafiles', 'poincare_fig19_d=-12.dat'))
+    mdata = np.loadtxt(os.path.join(BASE, 'data', 'poincare_fig19_d=-12.dat'))
     ui = mdata[:, 0]
     ui2 = mdata[:, 2]
     FP = -98.1265

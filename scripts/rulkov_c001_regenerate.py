@@ -18,8 +18,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-DATADIR = os.path.join(BASE, 'code', 'datafiles')
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATADIR = os.path.join(BASE, 'data')
 FIGDIR = os.path.join(BASE, 'figures')
 os.makedirs(FIGDIR, exist_ok=True)
 

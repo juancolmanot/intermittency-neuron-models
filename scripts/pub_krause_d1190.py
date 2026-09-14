@@ -24,7 +24,7 @@ matplotlib.rcParams.update({
     'font.family': 'serif',
 })
 
-BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 FIG = os.path.join(BASE, 'figures')
 
 D = '-11.90'

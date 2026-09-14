@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BASE = os.path.abspath(os.path.join(HERE, '..', '..'))
+BASE = os.path.abspath(os.path.join(HERE, '..'))
 FIG  = os.path.join(BASE, 'figures')
 os.makedirs(FIG, exist_ok=True)
 

@@ -46,7 +46,7 @@ for i, (ax, g) in enumerate(zip(axes, gammas)):
 axes[-1].set_xlabel(r'$n$', fontsize=20)
 axes[-1].tick_params(axis='x', labelsize=16)
 
-out = os.path.join(os.path.dirname(__file__), '..', 'figures', 'rulkov_map_evolution.png')
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'figures', 'rulkov_map_evolution.png')
 fig.savefig(out, dpi=300, bbox_inches='tight')
 plt.close(fig)
 print(f"Saved {out}")

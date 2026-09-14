@@ -8,3 +8,4 @@ src/rulkov_scaling_v2
 src/rulkov_cscan
 data/rulkov_cscan/
 *.log
+figures/

@@ -8,17 +8,17 @@ protocol as the shipped generator), then measures
   * the two terms q c^2 and eps that set the sub-interval width x_s + c
   * single-branch M fit (slope m, R^2) and two-branch slopes m1, m2
   * RPD jump ratio phi(x_s^-)/phi(x_s^+) from a fine histogram
-Outputs: raw_data/rulkov_cscan/reinj_c=<c>.dat, processed_data/rulkov_cscan_summary.csv,
+Outputs: data/rulkov_cscan/reinj_c=<c>.dat, data/rulkov_cscan_summary.csv,
 figures/rulkov_cscan.{png,pdf}.
 """
 import os, subprocess, sys
 import numpy as np
 from scipy import stats
 
-BASE   = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-EXE    = os.path.join(BASE, 'cpp', 'cscan', 'rulkov_cscan')
-RAWDIR = os.path.join(BASE, 'raw_data', 'rulkov_cscan')
-OUTCSV = os.path.join(BASE, 'processed_data', 'rulkov_cscan_summary.csv')
+BASE   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXE    = os.path.join(BASE, 'src', 'rulkov_cscan')
+RAWDIR = os.path.join(BASE, 'data', 'rulkov_cscan')
+OUTCSV = os.path.join(BASE, 'data', 'rulkov_cscan_summary.csv')
 FIGDIR = os.path.join(BASE, 'figures')
 os.makedirs(RAWDIR, exist_ok=True)
 

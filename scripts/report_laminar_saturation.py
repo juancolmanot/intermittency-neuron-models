@@ -18,11 +18,11 @@ import matplotlib.gridspec as gridspec
 from matplotlib.patches import FancyArrowPatch
 from matplotlib import patheffects
 
-BASEDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
+BASEDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 FIGDIR  = os.path.join(BASEDIR, 'figures')
-REPDIR  = os.path.join(BASEDIR, 'reports')
-LOGDIR  = os.path.join(BASEDIR, 'logs')
-DATADIR = os.path.join(BASEDIR, 'code', 'datafiles')
+REPDIR  = os.path.join(BASEDIR, 'figures')
+LOGDIR  = os.path.join(BASEDIR, 'data')
+DATADIR = os.path.join(BASEDIR, 'data')
 os.makedirs(REPDIR, exist_ok=True)
 
 PUB_RC = {

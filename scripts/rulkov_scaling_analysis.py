@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 import os
 import sys
 
-DATADIR = os.path.join(os.path.dirname(__file__), '..', '..', 'code', 'datafiles')
-OUTDIR = os.path.join(os.path.dirname(__file__), '..', '..', 'figures')
+DATADIR = os.path.join(os.path.dirname(__file__), '..', 'data')
+OUTDIR = os.path.join(os.path.dirname(__file__), '..', 'figures')
 os.makedirs(OUTDIR, exist_ok=True)
 
 plt.rcParams.update({
