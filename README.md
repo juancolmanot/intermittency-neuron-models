@@ -196,7 +196,7 @@ Added in response to the reviewers:
 | File | Purpose |
 |------|---------|
 | `src/rulkov_cscan.cpp` | Reinjection collector for the Rulkov map parameterised in the laminar half-width `c` (exact `gamma_c`, `x*`). |
-| `scripts/rulkov_c_scan.py` | Scan over `c` (Sec. 3.4.4, Fig. 7): Branch-1 fraction `P1(c)`, the two terms `q c^2` vs `eps`, RPD jump; compares with Eq. (27). Regenerates its own raw data (`data/rulkov_cscan/`, ~1 min) if absent. |
+| `scripts/rulkov_c_scan.py` | Scan over `c` (Sec. 3.4.4, Fig. 6 bottom-right): Branch-1 fraction `P1(c)`, the two terms `q c^2` vs `eps`, RPD jump; compares with Eq. (27). Regenerates its own raw data (`data/rulkov_cscan/`, ~1 min) if absent. |
 | `data/rulkov_cscan_summary.csv` | Output table of the scan. |
 | `scripts/fig_rulkov_bifurcation.py` | Fig. 1 (top): bifurcation diagram of the fast map at `alpha_R = 4.8`, with `gamma_SN = -2.931` and the boundary crisis `gamma_EC = -4.263`. |
 | `scripts/rulkov_c01_regenerate.py`, `scripts/rulkov_c001_regenerate.py` | Rulkov `c = 0.1` and `c = 0.01` pipelines (Secs. 3.3–3.4). Both use `eps = 3e-4`. |

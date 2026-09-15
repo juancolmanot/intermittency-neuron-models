@@ -8,7 +8,7 @@ protocol as the shipped generator), then measures
   * the two terms q c^2 and eps that set the sub-interval width x_s + c
   * single-branch M fit (slope m, R^2) and two-branch slopes m1, m2
   * RPD jump ratio phi(x_s^-)/phi(x_s^+) from a fine histogram
-Outputs: data/rulkov_cscan/reinj_c=<c>.dat, data/rulkov_cscan_summary.csv,
+Outputs: raw_data/rulkov_cscan/reinj_c=<c>.dat, processed_data/rulkov_cscan_summary.csv,
 figures/rulkov_cscan.{png,pdf}.
 """
 import os, subprocess, sys
@@ -96,25 +96,20 @@ with open(OUTCSV, 'w', newline='') as fh:
 for d in rows: print(f"  c={d['c']:<6} P1={d['P1']:.4f}  model={d['P1_model']:.4f}")
 
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-plt.rcParams.update({'font.size': 13, 'font.family': 'serif'})
-fig, ax = plt.subplots(1, 3, figsize=(15, 4.4))
-cf = np.logspace(np.log10(cs.min()), np.log10(cs.max()), 200)
-ax[0].semilogx(cs, P1, 'o', color='blue', label='numerical')
-ax[0].semilogx(cf, P1_model(cf), '-', color='red', label=r'$[(x_s-x_i)/(c-x_i)]^{\alpha+1}$')
-ax[0].axvline(abs(X_I), ls='--', color='gray', label=rf'$c_t=|x_i|={abs(X_I):.3f}$')
-ax[0].axvline(0.01, ls=':', color='gray'); ax[0].axvline(0.1, ls=':', color='gray')
-ax[0].set_xlabel('$c$'); ax[0].set_ylabel('$P_1$ (fraction in $[-c, x_s)$)'); ax[0].legend(fontsize=10)
-ax[0].text(0.03, 0.95, '(a)', transform=ax[0].transAxes, fontweight='bold', va='top')
-ax[1].loglog(cf, A2*cf**2, '-', color='blue', label='$q c^2$')
-ax[1].axhline(EPS, color='red', label=r'$\varepsilon$')
-ax[1].axvline(np.sqrt(EPS/A2), ls='--', color='gray', label=rf'$c^*=\sqrt{{\varepsilon/q}}={np.sqrt(EPS/A2):.3f}$')
-ax[1].set_xlabel('$c$'); ax[1].set_ylabel('contribution to $x_s + c$'); ax[1].legend(fontsize=10)
-ax[1].text(0.03, 0.95, '(b)', transform=ax[1].transAxes, fontweight='bold', va='top')
+# Style identical to rulkov_c001_regenerate.py (single-panel figure, joins Fig. rpd-c001)
+plt.rcParams.update({"text.usetex": True, "font.family": "serif", "font.size": 11})
+TICK_SIZE, LABEL_SIZE, MS, LW_THEO = 30, 39, 40, 3.0
 R2 = np.array([d['R2_single'] for d in rows]); J = np.array([d['jump'] for d in rows])
-ax[2].semilogx(cs, J, 's', color='blue'); ax[2].set_xlabel('$c$'); ax[2].set_ylabel(r'$\phi(x_s^-)/\phi(x_s^+)$', color='blue')
-ax2 = ax[2].twinx(); ax2.semilogx(cs, 1 - R2, '^', color='red'); ax2.set_ylabel('$1 - R^2$ (single-branch $M$ fit)', color='red'); ax2.set_yscale('log')
-ax[2].text(0.03, 0.95, '(c)', transform=ax[2].transAxes, fontweight='bold', va='top')
+cf = np.logspace(np.log10(cs.min()), np.log10(cs.max()), 400)
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.set_xscale('log')
+ax.plot(cf, P1_model(cf), '-', color='red', lw=LW_THEO, zorder=3)
+ax.scatter(cs, P1, s=MS*2, c='blue', marker='o', edgecolors='none', zorder=4)
+ax.axvline(abs(X_I), ls='--', color='gray', lw=1.5, zorder=2)
+ax.text(abs(X_I)*1.08, 0.55, r'$c_t=|x_i|$', fontsize=TICK_SIZE, color='gray')
+ax.set_xlabel(r'$c$', fontsize=LABEL_SIZE); ax.set_ylabel(r'$P_1(c)$', fontsize=LABEL_SIZE)
+ax.set_ylim(-0.03, 1.03); ax.tick_params(axis='both', labelsize=TICK_SIZE); ax.locator_params(axis='y', nbins=4)
 fig.tight_layout()
-fig.savefig(os.path.join(FIGDIR, 'rulkov_cscan.png'), dpi=200, bbox_inches='tight')
-fig.savefig(os.path.join(FIGDIR, 'rulkov_cscan.pdf'), bbox_inches='tight')
-print("saved figures/rulkov_cscan.{png,pdf}")
+fig.savefig(os.path.join(FIGDIR, 'rulkov_P1_of_c.png'), dpi=300, bbox_inches='tight')
+fig.savefig(os.path.join(FIGDIR, 'rulkov_P1_of_c.pdf'), bbox_inches='tight')
+print("saved figures/rulkov_P1_of_c.{png,pdf}")
