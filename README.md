@@ -204,6 +204,17 @@ Added in response to the reviewers:
 
 Build the C++ tools with `g++ -O3 -o rulkov_cscan src/rulkov_cscan.cpp` (and see `src/Makefile*` for the rest). Python requirements: `numpy`, `scipy`, `matplotlib` (LaTeX text rendering is enabled in several scripts; install a TeX distribution or set `text.usetex = False`).
 
+## Fit conventions used in the manuscript
+
+All Izhikevich M-function branch fits come from `scripts/M_rpd_pdll_krause.py` (`get_branches` +
+`krause_theory`). At `d = -11.90` the breakpoint is `u_c2 = -0.676`; Branch 1 is fitted on the
+reflected coordinate over `[-2, -0.73]`, giving `m_r = 0.389`, `alpha_1 = -0.364`; Branch 2 over
+`[-0.007, 2]`, giving `m_2 = 0.632`, `alpha_2 = +0.72`, `k_2 = 0.020`. These are the numbers in the
+manuscript's exponent-comparison table, behind the theoretical curves of the M/RPD figures, and used
+by `report_laminar_saturation.py` for the saturation limit (`<l>_inf` = 24.5 for Branch 1). The
+cubic coefficient of the F^2 normal form at `d = -11.90` is `A = 0.01482` (`fit_A`, window
+`|u| < 0.5`). Rulkov: `eps = 3e-4`, `x_i = -0.098`, `m = 0.328` (`c = 0.1`), `q = 0.5745`.
+
 ## License
 
 Code: MIT License (see `LICENSE`). Data files under `data/` and `multiseed/`: CC BY 4.0.

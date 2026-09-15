@@ -104,8 +104,13 @@ def fig1_conceptual():
 
     # Type-III (this system): ⟨l⟩_th from Branch 1 integration (d=-11.90)
     # Branch 1 (inverted): φ₁ = b·(u_{c2} - u)^α₁ on [-c, u_{c2}]
-    u_c2 = -0.65
-    alpha1 = -0.4220
+    # Canonical Branch-1 parameters at d = -11.90: breakpoint and reflected-slope fit over
+    # [-2, -0.73] from M_rpd_pdll_krause.get_branches/krause_theory (m_r = 0.389, alpha_1 = -0.364).
+    # These are the values behind the theoretical curves of the M/RPD figures and give
+    # <l>_inf(Branch 1) = 24.5, the value quoted in the manuscript. (An earlier full-branch fit,
+    # alpha_1 = -0.422 with u_c2 = -0.65, is superseded.)
+    u_c2 = -0.676
+    alpha1 = -0.364
     b_norm_1 = 0.4701
     k1 = 1.0
 
